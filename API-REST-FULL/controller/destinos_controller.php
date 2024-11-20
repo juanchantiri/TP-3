@@ -1,40 +1,28 @@
 <?php
-    require_once 'model/destinos_model.php';
+    require_once './API-REST-FULL/model/destinos_model.php';
     //require_once 'model/categorias_model.php';
-    require_once 'view/json-view.php';  
+    require_once './API-REST-FULL/view/json-view.php';  
 
  class DestinosController {
 
     private $model;
     private $view; 
 
-    function __construct($res) {
+    public function __construct() {
         $this ->model = new destinosModel();
         $this ->view = new JSONView();
     }
 
     public function getAll($req, $res) {
-        if(!$res->user) {
-            return $this->view->response("No autorizado", 401);
+        $destinos = $this->model->getDestinos();
+        if (empty($destinos)) {
+            return $this->view->response("No se encontraron destinos", 404);
         }
-
-        $categoria_id = null;
-
-        if(isset($req->query->categoria_id)) {
-            $categoria_id = $req->query->$categoria_id;
-        }
-        
-        $orderBy = false;
-        if(isset($req->query->orderBy))
-            $orderBy = $req->query->orderBy;
-
-        $destinos = $this->model->getDestinos($categoria_id, $orderBy);
-        
 
         return $this->view->response($destinos);
     }
 
-    // /api/destinos/:id
+    // API-REST-FUll/destinos/:id
     public function get($req, $res) {
         $id = $req->params->id;
         $destinos = $this->model->getDestinos($id);
@@ -85,7 +73,7 @@
     //     return $this->view->response($destinos, 201);
     // }
 
-    // // api/tareas/:id (PUT)
+    // // API-REST-FUll/destinos/:id (PUT)
     // public function update($req, $res) {
     //     $id = $req->params->id;
 

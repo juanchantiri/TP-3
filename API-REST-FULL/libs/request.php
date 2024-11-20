@@ -1,6 +1,6 @@
 <?php 
 
-    class Request{
+    class Request {
         public $body = null;
         public $params = null;
         public $query = null;

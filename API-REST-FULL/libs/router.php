@@ -1,6 +1,6 @@
 <?php
-require_once 'request.php';
-require_once 'response.php';
+require_once './libs/request.php';
+require_once './libs/response.php';
 
 class Route {
     private $url;
