@@ -19,7 +19,7 @@
         }
 
         $categoria_id = null;
-        // obtengo las tareas de la DB
+
         if(isset($req->query->categoria_id)) {
             $categoria_id = $req->query->$categoria_id;
         }
@@ -30,7 +30,7 @@
 
         $destinos = $this->model->getDestinos($categoria_id, $orderBy);
         
-        // mando las tareas a la vista
+
         return $this->view->response($destinos);
     }
 
@@ -58,7 +58,7 @@
         $this->view->response("El destino con el id=$id se eliminó con éxito");
     }
 
-    // api/tareas (POST)
+
     // public function create($req, $res) {
 
     //     // valido los datos
