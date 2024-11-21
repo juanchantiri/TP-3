@@ -1,7 +1,7 @@
 <?php
-require_once 'API-REST-FULL/controller/destinos_controller.php';
+require_once 'app/controller/destinos_controller.php';
 require_once 'libs/router.php';
-require_once 'controller/user_API_controller.php';
+require_once 'app/controller/user_api_controller.php';
 require_once 'middleware/jwt_auth_middleware.php';
 
 $router = new Router();
