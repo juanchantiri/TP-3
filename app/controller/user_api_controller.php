@@ -1,8 +1,8 @@
 <?php
 
 
-    require_once 'API-REST-FULL/view/json-view.php';
-    require_once 'API-REST-FULL/libs/jwt.php';
+    require_once 'app/view/json-view.php';
+    require_once 'libs/jwt.php';
 
     class UserApiController {
         private $model;

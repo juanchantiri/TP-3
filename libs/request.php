@@ -12,6 +12,6 @@
             catch (Exception $e){
                 $this->body = null;
             }
-            $this->query=(object) $_GET;
+            $this->query= (object) $_GET;
         }
     }
