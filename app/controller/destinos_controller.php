@@ -24,7 +24,7 @@
     // API-REST-FUll/destinos/:id
     public function get($req, $res) {
         $id = $req->params->id;
-        $destinos = $this->model->getDestinos($id);
+        $destinos = $this->model->idDestinos($id);
 
         if(!$destinos) {
             return $this->view->response("El destinos con el id=$id no existe", 404);
@@ -35,13 +35,13 @@
     public function delete($req, $res) {
         $id = $req->params->id;
 
-        $destinos = $this->model->getDestinos($id);
+        $destinos = $this->model->idDestinos($id);
 
         if (!$destinos) {
             return $this->view->response("El destino con el id=$id no existe", 404);
         }
 
-        $this->model->deleteDestinos ($id);
+        $this->model->deleteDestinos($id);
         $this->view->response("El destino con el id=$id se eliminó con éxito", 200);
     }
 
@@ -68,7 +68,7 @@
         }
 
         // buena práctica es devolver el recurso insertado
-        $destinos = $this->model->getDestinos($id);
+        $destinos = $this->model->idDestinos($id);
         return $this->view->response($destinos, 201);
     }
 
@@ -77,7 +77,7 @@
         $id = $req->params->id;
 
         // verifico que exista
-        $destinos = $this->model->getDestinos($id);
+        $destinos = $this->model->idDestinos($id);
         if (!$destinos) {
             return $this->view->response("El destino con el id=$id no existe", 404);
         }
@@ -96,7 +96,7 @@
         // actualizo el destino
         $this->model->updateDestinos($id,$pais,$ciudad,$actividades,$precio);
 
-        $destinos = $this->model->getDestinos($id);
+        $destinos = $this->model->idDestinos($id);
         $this->view->response($destinos, 200);
     }
 
